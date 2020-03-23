@@ -19,8 +19,9 @@ hexo.extend.filter.register('after_post_render', function(data){
       // image in xxtitle/ will go to xxtitle/index/
       appendLink = 'index/';
       var endPos = link.lastIndexOf('/');
-    }
-    else {
+    } else if (config.pretty_urls.trailing_index === false && config.pretty_urls.trailing_html === false) {
+      var endPos = link.lastIndexOf('/');
+    } else {
       var endPos = link.length-1;
     }
     link = link.substring(beginPos, endPos) + '/' + appendLink;
